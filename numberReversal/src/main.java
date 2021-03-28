@@ -2,41 +2,37 @@
  * This application will have the user input a number then will reverse that number and display it
  */
 
-import java.util.*;
+//import java.util.*;
+import java.io.*;
 
+ class ReverseNumber{
 
-public class main {
+     static void reverseArray(int arr[],int start,int end){
+     
+          int temp;
+	     if(start>=end)
+	           return;	    
+	     temp = arr[start];
+	     arr[start] = arr[end];
+	     arr[end] = temp;
+	
+            reverseArray(arr,start+1,end-1);	
+     }
+	static void printArray(int arr[],int size){
+	
+	     for(int i=0;i<size;i++)
+	         System.out.println(arr[i]+" ");
+		 System.out.println(" ");    
+	     
+	}	
+  
+	public static void main(String args[]){
+	
+	    int arr[] = {1,2,3,4,5,6};
+	    printArray(arr,6);
+	    reverseArray(arr,0,5);
+	    System.out.println("reverse number is");
+	    printArray(arr,6);	
+	}	
 
-	static public Scanner input = new Scanner(System.in);
-	static public Scanner input2 = new Scanner(System.in);
-	static public int i, reminder, cont, rev = 0;
-	static public String contChoice;
-		
-	public static void main(String[] args)
-	{
-		while (cont != 1) {
-			
-			System.out.println("Enter up to a nine digit number to reverse: ");
-			i = input.nextInt();
-			rev = 0;
-			// Following 6 lines borrowed from https://www.tutorialgateway.org/reverse-a-number-in-java/
-			while (i > 0) 
-			{
-				reminder = i %10;
-				rev = rev * 10 + reminder;
-				i = i / 10;
-			}
-			
-			System.out.println("The number reversed is: " + rev);
-			
-			System.out.println("Would you like to exit? Please enter numbers only. \n1. Yes \n2. No");
-			if(input2.nextInt() == 1) {
-				cont = 1;
-			}
-			
-		}
-		input.close();
-		input2.close();
-		System.out.println("Goodbye!");
-	}
 }
